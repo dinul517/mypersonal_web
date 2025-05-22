@@ -20,7 +20,6 @@ const Skills = () => {
         { name: "Express.js", level: 95, icon: "🚂" },
         { name: "MongoDB", level: 90, icon: "🍃" },
         { name: "REST APIs", level: 95, icon: "🌐" },
-        { name: "GraphQL", level: 85, icon: "📊" },
         { name: "Socket.io", level: 80, icon: "🔌" }
       ]
     },
@@ -28,20 +27,14 @@ const Skills = () => {
       title: "Tools & Technologies",
       skills: [
         { name: "Git", level: 90, icon: "📦" },
-        { name: "Docker", level: 85, icon: "🐳" },
-        { name: "AWS", level: 80, icon: "☁️" },
         { name: "CI/CD", level: 85, icon: "🔄" },
-        { name: "Jest", level: 85, icon: "🧪" },
-        { name: "Webpack", level: 80, icon: "📦" }
       ]
     }
   ];
 
   return (
-    <section id="skills" className="py-20 relative">
+    <section id="skills" className="py-20 relative bg-black">
       {/* Background effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5" />
-      
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="section-title text-center mb-16">Technical Skills</h2>
 
@@ -64,7 +57,7 @@ const Skills = () => {
                     {/* Progress bar */}
                     <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full transition-all duration-500"
+                        className="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full transition-all duration-500"
                         style={{ width: `${skill.level}%` }}
                       />
                     </div>

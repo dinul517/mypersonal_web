@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Certificates = () => {
-  const [activeCategory, setActiveCategory] = useState('all');
+  // Removed state for activeCategory
 
   const certificates = [
     {
@@ -46,46 +46,21 @@ const Certificates = () => {
     }
   ];
 
-  const categories = [
-    { id: 'all', label: 'All Certificates' },
-    { id: 'development', label: 'Full Stack' },
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' },
-    { id: 'database', label: 'Database' }
-  ];
+  // Removed categories array
 
-  const filteredCertificates = activeCategory === 'all'
-    ? certificates
-    : certificates.filter(cert => cert.category === activeCategory);
+  // Removed filteredCertificates constant and logic
 
   return (
-    <section id="certificates" className="py-20 relative">
+    <section id="certificates" className="py-20 relative bg-black">
       {/* Background effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5" />
-      
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="section-title text-center mb-16">Certifications</h2>
 
-        {/* Category filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map(category => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-2 rounded-full transition-all duration-300
-                ${activeCategory === category.id 
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white' 
-                  : 'bg-gray-800/50 text-gray-300 hover:bg-gray-800'
-                }`}
-            >
-              {category.label}
-            </button>
-          ))}
-        </div>
+        {/* Removed Category filters */}
 
         {/* Certificates grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {filteredCertificates.map(certificate => (
+          {certificates.map(certificate => ( // Directly map over certificates
             <div key={certificate.id} className="group">
               <div className="futuristic-card h-full">
                 <div className="relative overflow-hidden rounded-t-lg">

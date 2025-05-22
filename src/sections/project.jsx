@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 const Project = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
+  // Removed state for activeFilter
 
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with real-time inventory, payment integration, and admin dashboard.",
+      title: "E-Commerce-ai platform",
+      description: "E-commerce AI App is a full-stack MERN application with AI features like smart product recommendations, chatbot support, and intelligent search. It includes user authentication, a responsive UI, shopping cart, and admin dashboard..",
       image: "/projects/ecommerce.jpg",
       technologies: ["React", "Node.js", "MongoDB", "Express"],
       category: "fullstack",
@@ -26,8 +26,8 @@ const Project = () => {
     },
     {
       id: 3,
-      title: "Social Media Dashboard",
-      description: "Analytics dashboard for social media management with data visualization and reporting.",
+      title: "finwise-ai",
+      description: "finwise-ai is a full-stack MERN application that helps users manage income, expenses, and savings efficiently. Integrated with AI, the app provides smart budgeting insights, automated spending analysis, and personalized financial recommendations. It features secure authentication, a responsive UI, and interactive financial dashboards.",
       image: "/projects/dashboard.jpg",
       technologies: ["React", "Express", "MongoDB", "Chart.js"],
       category: "frontend",
@@ -36,45 +36,20 @@ const Project = () => {
     }
   ];
 
-  const filters = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'fullstack', label: 'Full Stack' },
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' }
-  ];
+  // Removed filters array
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+  // Removed filteredProjects constant and logic
 
   return (
-    <section id="projects" className="py-20 relative">
+    <section id="projects" className="py-20 relative bg-black">
       {/* Background effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5" />
-      
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="section-title text-center mb-16">Featured Projects</h2>
+      
         
-        {/* Filter buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map(filter => (
-            <button
-              key={filter.id}
-              onClick={() => setActiveFilter(filter.id)}
-              className={`px-6 py-2 rounded-full transition-all duration-300
-                ${activeFilter === filter.id 
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white' 
-                  : 'bg-gray-800/50 text-gray-300 hover:bg-gray-800'
-                }`}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div>
-
         {/* Projects grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map(project => (
+          {projects.map(project => ( // Directly map over projects
             <div key={project.id} className="group">
               <div className="futuristic-card h-full flex flex-col">
                 {/* Project Image */}
@@ -131,28 +106,8 @@ const Project = () => {
           ))}
         </div>
 
-        {/* View More Button */}
-        <div className="text-center mt-12">
-          <a 
-            href="#"
-            className="futuristic-button inline-flex items-center gap-2"
-          >
-            View All Projects
-            <svg 
-              className="w-5 h-5" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M17 8l4 4m0 0l-4 4m4-4H3" 
-              />
-            </svg>
-          </a>
-        </div>
+        
+        
       </div>
     </section>
   );

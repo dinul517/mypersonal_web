@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const About = () => {
   const experiences = [
@@ -7,6 +8,7 @@ const About = () => {
     { year: '2021', title: 'Backend Developer', company: 'Startup', description: 'Built RESTful APIs and database architectures' },
   ];
 
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,18 +26,18 @@ const About = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
 
     try {
-      // Replace with actual API endpoint
-      const response = await fetch('/api/send-message', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // Ganti dengan Service ID, Template ID, dan Public Key Anda
+      const result = await emailjs.sendForm(
+        'service_ptm2zhc', // Ganti dengan Service ID Anda
+        'template_m2bgo3t', // Ganti dengan Template ID Anda
+        formRef.current,
+        'AStyL5gBM6DLPrpI1' // Ganti dengan Public Key Anda
+      );
 
-      if (response.ok) {
+      if (result.text === 'OK') {
         setSubmitStatus('success');
         setFormData({
           name: '',
@@ -46,6 +48,7 @@ const About = () => {
         setSubmitStatus('error');
       }
     } catch (error) {
+      console.error('Error sending email:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -53,10 +56,8 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-20 relative bg-black">
       {/* Background effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
       <div className="container mx-auto px-4 relative z-10">
         
         <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -73,7 +74,7 @@ const About = () => {
                       <div className="w-2 h-2 rounded-full bg-yellow-500/50"></div>
                       <div className="w-2 h-2 rounded-full bg-green-500/50"></div>
                     </div>
-                    <div className="flex-1 text-center text-xs text-gray-400">profile.jpg</div>
+                    
                   </div>
                   {/* Profile Image Container */}
                   <div className="relative p-3 flex-1 flex flex-col justify-center">
@@ -158,20 +159,17 @@ const About = () => {
             <div className="futuristic-card">
               <h3 className="text-2xl font-bold mb-6 text-gradient">About Me</h3>
               <p className="text-gray-300 leading-relaxed">
-                I am a passionate MERN Stack Developer with a strong foundation in both frontend and backend development. 
-                My journey in web development started with a curiosity for creating interactive and user-friendly applications. 
-                I specialize in building scalable web applications using modern technologies and best practices.
+              Fullstack Developer with 3+ years of experience specializing in building scalable applications using the MERN stack).
+               Skilled in designing RESTful APIs, implementing modern UI with TailwindCSS and React Hooks, and managing data with Mongoose. 
+               Proficient in Git, Postman, and deploying fullstack apps using platforms like Vercel and Render. Experienced in integrating third-party APIs,
+                developing authentication systems, and optimizing performance for e-commerce and AI-powered platforms.
               </p>
-              <p className="text-gray-300 leading-relaxed mt-4">
-                When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
-                or sharing my knowledge through technical writing. I believe in continuous learning and staying updated 
-                with the latest trends in web development.
-              </p>
+              
             </div>
             {/* Send Message */}
             <div className="futuristic-card">
               <h3 className="text-2xl font-bold mb-6 text-gradient">Send Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-gray-400 mb-2">Name</label>
                   <input
@@ -181,7 +179,8 @@ const About = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 bg-gray-800/50 border border-cyan-500/20 rounded-lg focus:border-cyan-500 focus:outline-none text-white transition-colors duration-300"
+                    className="w-full px-4 py-2 bg-gray-800/50 border border-green-500/20 rounded-lg focus:border-green-500 focus:outline-none text-white transition-colors duration-300"
+                    placeholder="Your name"
                   />
                 </div>
                 <div>
@@ -193,7 +192,8 @@ const About = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 bg-gray-800/50 border border-cyan-500/20 rounded-lg focus:border-cyan-500 focus:outline-none text-white transition-colors duration-300"
+                    className="w-full px-4 py-2 bg-gray-800/50 border border-green-500/20 rounded-lg focus:border-green-500 focus:outline-none text-white transition-colors duration-300"
+                    placeholder="Your email"
                   />
                 </div>
                 <div>
@@ -205,7 +205,8 @@ const About = () => {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-2 bg-gray-800/50 border border-cyan-500/20 rounded-lg focus:border-cyan-500 focus:outline-none text-white transition-colors duration-300"
+                    className="w-full px-4 py-2 bg-gray-800/50 border border-green-500/20 rounded-lg focus:border-green-500 focus:outline-none text-white transition-colors duration-300"
+                    placeholder="Your message"
                   />
                 </div>
                 <button
@@ -213,10 +214,29 @@ const About = () => {
                   className="futuristic-button w-full flex items-center justify-center"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </span>
+                  ) : (
+                    'Send Message'
+                  )}
                 </button>
+
+                {/* Status Messages */}
                 {submitStatus === 'success' && (
-                  <p className="text-green-400 text-center mt-2">Message sent successfully!</p>
+                  <div className="mt-4 p-4 bg-green-500/20 border border-green-500/40 rounded-lg text-green-400 text-center">
+                    Message sent successfully! I'll get back to you soon.
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="mt-4 p-4 bg-red-500/20 border border-red-500/40 rounded-lg text-red-400 text-center">
+                    Failed to send message. Please try again later.
+                  </div>
                 )}
               </form>
             </div>
