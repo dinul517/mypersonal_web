@@ -29,16 +29,16 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-4"
+            className="mb-6"
           >
             <TypeAnimation
               sequence={[
-                'Welcome to my personal web, my name is Dinul Islam Alfatiha as a ',
+                ' hy, my name is Dinul Islam Alfatiha as a ',
                 1000,
               ]}
               wrapper="span"
               speed={50}
-              className="text-lg md:text-xl text-green-600 font-light tracking-wider"
+              className="text-lg md:text-xl  text-green-600 font-light tracking-wider"
               cursor={true}
               repeat={0}
             />

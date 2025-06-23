@@ -100,7 +100,6 @@ const About = () => {
                   </div>
                   {/* Window Footer */}
                   <div className="p-2 border-t border-cyan-500/20 flex justify-between items-center text-xs text-gray-400">
-                    <span>Portfolio 2024</span>
                     <span>MERN Stack</span>
                   </div>
                 </div>
@@ -137,14 +136,14 @@ const About = () => {
               </div>
             </div>
             {/* Connect With Me */}
-            <div className="futuristic-card w-full">
+            {/* <div className="futuristic-card w-full">
               <h3 className="text-xl font-bold mb-4 text-gradient">Connect With Me</h3>
               <div className="flex flex-wrap gap-4">
                 <a href="#" className="futuristic-button text-sm bg-transparent border border-cyan-500/50 hover:border-cyan-500"><span className="mr-2">💼</span>LinkedIn</a>
                 <a href="#" className="futuristic-button text-sm bg-transparent border border-cyan-500/50 hover:border-cyan-500"><span className="mr-2">📚</span>GitHub</a>
                 <a href="#" className="futuristic-button text-sm bg-transparent border border-cyan-500/50 hover:border-cyan-500"><span className="mr-2">📷</span>Instagram</a>
               </div>
-            </div>
+            </div> */}
           </div>
           {/* Divider Futuristik Ganda di Tengah */}
           <div className="hidden lg:flex flex-col items-center absolute left-1/2 top-0 z-10 h-full pointer-events-none" style={{ transform: 'translateX(-50%)' }}>

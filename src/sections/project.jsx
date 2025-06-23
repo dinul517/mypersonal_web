@@ -8,17 +8,17 @@ const Project = () => {
       id: 1,
       title: "E-Commerce-ai platform",
       description: "E-commerce AI App is a full-stack MERN application with AI features like smart product recommendations, chatbot support, and intelligent search. It includes user authentication, a responsive UI, shopping cart, and admin dashboard..",
-      image: "/projects/ecommerce.jpg",
+      image: "/public/image.png",
       technologies: ["React", "Node.js", "MongoDB", "Express"],
       category: "fullstack",
-      liveLink: "#",
-      githubLink: "#"
+      liveLink: "https://ecomerce-ai.vercel.app/",
+      githubLink: "https://github.com/dinul517/ecommerce-ai"
     },
     {
       id: 2,
       title: "Task Management System",
       description: "Collaborative task management platform with real-time updates and team collaboration features.",
-      image: "/projects/taskmanager.jpg",
+      image: "",
       technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
       category: "fullstack",
       liveLink: "#",
@@ -28,11 +28,11 @@ const Project = () => {
       id: 3,
       title: "finwise-ai",
       description: "finwise-ai is a full-stack MERN application that helps users manage income, expenses, and savings efficiently. Integrated with AI, the app provides smart budgeting insights, automated spending analysis, and personalized financial recommendations. It features secure authentication, a responsive UI, and interactive financial dashboards.",
-      image: "/projects/dashboard.jpg",
+      image: "/public/finwise.png",
       technologies: ["React", "Express", "MongoDB", "Chart.js"],
       category: "frontend",
-      liveLink: "#",
-      githubLink: "#"
+      liveLink: "https://fortofolio2-github-io.vercel.app/",
+      githubLink: ""
     }
   ];
 
@@ -89,7 +89,7 @@ const Project = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Live Demo
+                      Link project
                     </a>
                     <a 
                       href={project.githubLink}
